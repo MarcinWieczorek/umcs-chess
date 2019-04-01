@@ -13,7 +13,7 @@ class Board {
         void set(std::string, int, bool);
         void set(BoardPosition &);
         void set(Move &);
-        BoardPosition &get(int, int);
+        BoardPosition &get(char, int);
         BoardPosition &get(std::string);
 };
 

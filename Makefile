@@ -8,10 +8,10 @@ OBJ=$(filter-out ./Chess.o,$(OBJALL))
 all: chess
 
 chess: Chess.cc $(OBJ)
-	$(CPP) -o $@ $< $(OBJ)
+	@$(CPP) -o $@ $< $(OBJ)
 
 %.o: %.cc $(CPP_SOURCES)
-	$(CPP) $(CPPFLAGS) -c $< -o $@
+	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	rm *.o chess

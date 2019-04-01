@@ -5,7 +5,6 @@
 
 class FrontendCLI : Frontend {
     public:
-        // Board &board;
         FrontendCLI(Game &game);
         Game *game;
         Game &getGame();

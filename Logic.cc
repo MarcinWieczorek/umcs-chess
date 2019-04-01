@@ -1,4 +1,5 @@
 #include "Logic.h"
+#include "Constants.h"
 
 Logic::Logic(Game &game) {
     this->game = &game;
@@ -27,7 +28,37 @@ Move Logic::find_best_move(bool white) {
     return best_move;
 }
 
-bool Logic::is_move_valid(Move &) {
+bool Logic::is_move_valid(Move &m) {
+    switch(m.from.figure) {
+        case FIGURE_EMPTY: //move from empty spot
+            return false;
+        case FIGURE_PAWN:
+            //not straight
+            if(m.to.is_empty()) {
+                if(m.from.x != m.to.x) {
+                    return false;
+                }
+            }
+            else {
+                //onto own figure
+                if(m.to.white == m.from.white) {
+                    return false;
+                }
+
+                //More than 1 place
+                if(!(m.to.x == m.from.x - 1 || m.to.x == m.from.x + 1)) {
+                    return false;
+                }
+            }
+
+            //backwards
+            if(m.from.y > m.to.y) {
+                return false;
+            }
+
+            break;
+    }
+
     return true;
 }
 

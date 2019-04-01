@@ -1,5 +1,5 @@
 #include "BoardPosition.h"
-#include "Game.h"
+#include "Constants.h"
 
 BoardPosition::BoardPosition() {
     x = -1;

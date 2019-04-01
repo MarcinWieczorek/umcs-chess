@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "FrontendCLI.h"
+#include "Constants.h"
 
 FrontendCLI::FrontendCLI(Game &game) {
     this->game = &game;
@@ -11,8 +12,8 @@ Game &FrontendCLI::getGame() {
 }
 
 void FrontendCLI::draw() {
-    for(int y = 0; y < 8; y++) {
-        for(int x = 0; x < 8; x++) {
+    for(int y = 8; y > 0; y--) {
+        for(int x = 'a'; x <= 'h'; x++) {
             BoardPosition &pos = this->getGame().board.get(x, y);
             char c = pos.figure;
 
