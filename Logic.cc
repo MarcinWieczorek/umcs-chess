@@ -6,7 +6,7 @@ Logic::Logic(Game &game) {
 }
 
 Move Logic::find_best_move(bool white) {
-    int best_value = 100;
+    // int best_value = 100;
     Move best_move;
 
     for(int x = 'a'; x <= 'h'; x++) {

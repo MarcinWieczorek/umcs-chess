@@ -39,10 +39,15 @@ BoardPosition &Board::get(std::string str) {
     return get(str[0], str[1] - '0');
 }
 
-void Board::set(Move &move) {
+void Board::set(Move move) {
     move.to.figure = move.from.figure;
     move.from.figure = FIGURE_EMPTY;
     move.to.white = move.from.white;
+    set(move.from);
+    set(move.to);
+}
+
+void Board::undo(Move move) {
     set(move.from);
     set(move.to);
 }

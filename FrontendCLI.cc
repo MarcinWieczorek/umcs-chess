@@ -12,7 +12,9 @@ Game &FrontendCLI::getGame() {
 }
 
 void FrontendCLI::draw() {
+    std::cout << "-----------------" << std::endl;
     for(int y = 8; y > 0; y--) {
+        std::cout << y << " ";
         for(int x = 'a'; x <= 'h'; x++) {
             BoardPosition &pos = this->getGame().board.get(x, y);
             char c = pos.figure;
@@ -25,5 +27,10 @@ void FrontendCLI::draw() {
         }
         std::cout << std::endl;
     }
+    std::cout << "  ";
+    for(char x = 'a'; x <= 'h'; x++) {
+        std::cout << x << " ";
+    }
+    std::cout << std::endl;
 }
 

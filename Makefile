@@ -10,7 +10,7 @@ all: chess
 chess: Chess.cc $(OBJ)
 	@$(CPP) -o $@ $< $(OBJ)
 
-%.o: %.cc $(CPP_SOURCES)
+%.o: %.cc
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:

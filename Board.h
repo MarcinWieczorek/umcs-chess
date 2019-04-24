@@ -12,7 +12,8 @@ class Board {
         void set(char, int, int, bool);
         void set(std::string, int, bool);
         void set(BoardPosition &);
-        void set(Move &);
+        void set(Move);
+        void undo(Move);
         BoardPosition &get(char, int);
         BoardPosition &get(std::string);
 };
