@@ -3,17 +3,24 @@
 #include <iostream> //TODO DEBUG
 
 void Board::generate() {
+    // Clear the board
     for(int y = 1; y <= 8; y++) {
         for(char x = 'a'; x <= 'h'; x++) {
             this->set(x, y, FIGURE_EMPTY, true);
         }
     }
 
+    // Knights
+    set('b', 1, FIGURE_KNIGHT, true);
+    set('g', 1, FIGURE_KNIGHT, true);
+    set('b', 8, FIGURE_KNIGHT, false);
+    set('g', 8, FIGURE_KNIGHT, false);
+
+    // Pawns
     for(char x = 'a'; x <= 'h'; x++) {
         set(x, 2, FIGURE_PAWN, true);
         set(x, 7, FIGURE_PAWN, false);
     }
-    // set("b2", FIGURE_PAWN, true);
 }
 
 void Board::set(std::string pos, int figure, bool white) {

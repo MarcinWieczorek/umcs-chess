@@ -85,6 +85,9 @@ int AIMinimax::evaluate() {
                 case FIGURE_PAWN:
                     figure_score = POWER_PAWN;
                     break;
+                case FIGURE_KNIGHT:
+                    figure_score = POWER_KNIGHT;
+                    break;
             }
 
             if(pos.white != this->white) {
@@ -160,6 +163,31 @@ std::vector<Move> AIMinimax::get_moves() {
                     nearpos = this->game->board.get(x - 1, y + 1*m);
                     if(!nearpos.is_empty() && nearpos.white != this->white) {
                         moves.push_back(move_construct(pos, -1, 1 *m));
+                    }
+                }
+            }
+            else if(pos.figure == FIGURE_KNIGHT) {
+                int tx = 0, ty = 0;
+                BoardPosition np;
+                std::pair<int, int> options[8] = {
+                    { -2, -1 },
+                    { -2, +1 },
+                    { +2, -1 },
+                    { +2, +1 },
+                    { -1, -2 },
+                    { -1, +2 },
+                    { +1, -2 },
+                    { +1, +2 },
+                };
+
+                for(std::pair<int, int> &p : options) {
+                    tx = p.first;
+                    ty = p.second;
+                    np = this->game->board.get(x + tx, y + ty);
+                    if((np.is_empty() || np.white != this->white)
+                            && x + tx >= 'a' && x + tx <= 'h'
+                            && y + ty >= 1 && y + ty <= 8) {
+                        moves.push_back(move_construct(pos, tx, ty));
                     }
                 }
             }
