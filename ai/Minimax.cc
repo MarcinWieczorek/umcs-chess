@@ -191,6 +191,76 @@ std::vector<Move> AIMinimax::get_moves() {
                     }
                 }
             }
+            else if(pos.figure == FIGURE_ROOK) {
+                BoardPosition np;
+                bool goon = true;
+                // Left
+                for(int i = x - 1; i >= 'a' && goon; i--) {
+                    np = this->game->board.get(i, y);
+
+                    if(!np.is_empty()) {
+                        if(np.white == this->white) {
+                            break;
+                        }
+                        else {
+                            goon = false;
+                        }
+                    }
+
+                    moves.push_back(move_construct(pos, i - pos.x, 0));
+                }
+
+                // Right
+                goon = true;
+                for(int i = x + 1; i <= 'h' && goon; i++) {
+                    np = this->game->board.get(i, y);
+
+                    if(!np.is_empty()) {
+                        if(np.white == this->white) {
+                            break;
+                        }
+                        else {
+                            goon = false;
+                        }
+                    }
+
+                    moves.push_back(move_construct(pos, i - pos.x, 0));
+                }
+
+                // Up
+                goon = true;
+                for(int i = y + 1; i <= 8 && goon; i++) {
+                    np = this->game->board.get(x, i);
+
+                    if(!np.is_empty()) {
+                        if(np.white == this->white) {
+                            break;
+                        }
+                        else {
+                            goon = false;
+                        }
+                    }
+
+                    moves.push_back(move_construct(pos, 0, i - pos.y));
+                }
+
+                // Down
+                goon = true;
+                for(int i = y - 1; i >= 1 && goon; i--) {
+                    np = this->game->board.get(x, i);
+
+                    if(!np.is_empty()) {
+                        if(np.white == this->white) {
+                            break;
+                        }
+                        else {
+                            goon = false;
+                        }
+                    }
+
+                    moves.push_back(move_construct(pos, 0, i - pos.y));
+                }
+            }
         }
     }
 

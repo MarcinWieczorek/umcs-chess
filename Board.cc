@@ -16,6 +16,12 @@ void Board::generate() {
     set('b', 8, FIGURE_KNIGHT, false);
     set('g', 8, FIGURE_KNIGHT, false);
 
+    // Rooks
+    set('a', 1, FIGURE_ROOK, true);
+    set('h', 1, FIGURE_ROOK, true);
+    set('a', 8, FIGURE_ROOK, false);
+    set('h', 8, FIGURE_ROOK, false);
+
     // Pawns
     for(char x = 'a'; x <= 'h'; x++) {
         set(x, 2, FIGURE_PAWN, true);
